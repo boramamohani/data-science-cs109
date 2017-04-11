@@ -1,8 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 1.5.0"
-
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -25,8 +23,6 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 12, host:1212
-
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -46,16 +42,17 @@ Vagrant.configure("2") do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  
+  #
   config.vm.provider "virtualbox" do |vb|
-  	# Display the VirtualBox GUI when booting the machine
-  	#vb.gui = true
-  
-  	# Customize the amount of memory on the VM:
-  	vb.memory = 4096
-	vb.cpus = 2
+      vb.name = "devbox"
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+      vb.memory = 1024
+      vb.cpus = 2 
   end
-  
+  #
   # View the documentation for the provider you are using for more
   # information on available options.
 
@@ -73,7 +70,4 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-
-  #config.vm.provision :shell, path: 'bootstrap.sh', keep_color: true
-
 end
